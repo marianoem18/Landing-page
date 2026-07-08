@@ -1,0 +1,177 @@
+import type { LucideIcon } from 'lucide-react';
+import {
+  Clock, MessageCircleQuestion, Globe, Gauge, FileSpreadsheet, UserX,
+  Workflow, MessageSquare, Mail, ClipboardList, BarChart3, Plug,
+  Bot, Headphones, Cpu, LayoutDashboard,
+  UtensilsCrossed, Dumbbell, Store, Stethoscope, PawPrint, Home,
+  Hotel, GraduationCap, Trophy, Wrench, HardHat, Pill, Scale, Calculator, Briefcase,
+  PhoneCall, ScanSearch, PenTool, Rocket, LifeBuoy,
+  Bell, CreditCard, CalendarClock, Package, MonitorSmartphone, FolderCog, Repeat,
+} from 'lucide-react';
+
+export type Problem = {
+  icon: LucideIcon;
+  problem: string;
+  solution: string;
+};
+
+export const problems: Problem[] = [
+  {
+    icon: Clock,
+    problem: 'Perdés horas haciendo tareas repetitivas.',
+    solution: 'Automatizamos esas tareas para que se hagan solas, todos los días.',
+  },
+  {
+    icon: MessageCircleQuestion,
+    problem: 'Respondés siempre las mismas consultas.',
+    solution: 'Un asistente inteligente responde por vos, al instante y las 24 horas.',
+  },
+  {
+    icon: Globe,
+    problem: 'No tenés una página profesional.',
+    solution: 'Diseñamos un sitio que genera confianza desde el primer segundo.',
+  },
+  {
+    icon: Gauge,
+    problem: 'Tus procesos son lentos.',
+    solution: 'Ordenamos y conectamos cada paso para que todo fluya más rápido.',
+  },
+  {
+    icon: FileSpreadsheet,
+    problem: 'Usás demasiados Excel sueltos.',
+    solution: 'Centralizamos todo en un panel simple, claro y siempre actualizado.',
+  },
+  {
+    icon: UserX,
+    problem: 'Perdés clientes por falta de seguimiento.',
+    solution: 'Automatizamos recordatorios y seguimientos para que nadie se pierda.',
+  },
+];
+
+export type ServiceGroup = {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+  items: string[];
+};
+
+export const serviceGroups: ServiceGroup[] = [
+  {
+    icon: Workflow,
+    title: 'Automatización de procesos',
+    description: 'Conectamos tus herramientas para que el trabajo repetitivo se resuelva solo.',
+    items: ['WhatsApp', 'Emails', 'Google Sheets', 'Formularios', 'Reportes', 'Integraciones'],
+  },
+  {
+    icon: Bot,
+    title: 'Inteligencia Artificial',
+    description: 'Asistentes que atienden, responden y acompañan a tu equipo en tiempo real.',
+    items: ['Chatbots IA', 'Agentes IA', 'Atención automática', 'IA para empleados', 'Automatización inteligente'],
+  },
+  {
+    icon: Globe,
+    title: 'Desarrollo web',
+    description: 'Sitios rápidos y sistemas a medida que representan bien a tu negocio.',
+    items: ['Landing pages', 'Sitios institucionales', 'Tiendas online', 'Sistemas web', 'Sistemas personalizados'],
+  },
+  {
+    icon: LayoutDashboard,
+    title: 'Sistemas y paneles',
+    description: 'Gestioná stock, ventas y clientes desde un solo lugar, sin vueltas.',
+    items: ['Stock', 'Ventas', 'Clientes', 'Turnos', 'Inventario', 'Paneles administrativos'],
+  },
+  {
+    icon: Plug,
+    title: 'Integraciones',
+    description: 'Todo tu ecosistema digital hablando entre sí, sin cargar datos a mano.',
+    items: ['WhatsApp', 'Telegram', 'Gmail', 'Google Calendar', 'Mercado Pago', 'Stripe', 'APIs', 'CRM'],
+  },
+];
+
+export type Industry = {
+  icon: LucideIcon;
+  name: string;
+  example: string;
+};
+
+export const industries: Industry[] = [
+  { icon: UtensilsCrossed, name: 'Restaurante', example: 'Reservas y pedidos por WhatsApp automáticos' },
+  { icon: Dumbbell, name: 'Gimnasio', example: 'Recordatorios de pago y control de asistencia' },
+  { icon: Store, name: 'Tienda', example: 'Stock sincronizado y catálogo online' },
+  { icon: Stethoscope, name: 'Consultorio', example: 'Agenda de turnos y confirmaciones automáticas' },
+  { icon: PawPrint, name: 'Veterinaria', example: 'Historial de mascotas y recordatorios de vacunas' },
+  { icon: Home, name: 'Inmobiliaria', example: 'Seguimiento automático de interesados' },
+  { icon: Hotel, name: 'Hotel', example: 'Check-in digital y reportes de ocupación' },
+  { icon: GraduationCap, name: 'Colegio', example: 'Comunicación automática con familias' },
+  { icon: Trophy, name: 'Club', example: 'Cobro de cuotas y control de socios' },
+  { icon: Wrench, name: 'Taller', example: 'Seguimiento de órdenes de trabajo' },
+  { icon: HardHat, name: 'Ferretería', example: 'Control de inventario en tiempo real' },
+  { icon: Pill, name: 'Farmacia', example: 'Alertas de stock y vencimientos' },
+  { icon: Scale, name: 'Estudio jurídico', example: 'Gestión de expedientes y plazos' },
+  { icon: Calculator, name: 'Contador', example: 'Reportes automáticos para clientes' },
+  { icon: Briefcase, name: 'Empresa', example: 'Paneles de gestión a medida' },
+];
+
+export type ProcessStep = {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+};
+
+export const processSteps: ProcessStep[] = [
+  { icon: PhoneCall, title: 'Reunión inicial', description: 'Charlamos sobre tu negocio, sin tecnicismos.' },
+  { icon: ScanSearch, title: 'Analizamos tu negocio', description: 'Detectamos dónde estás perdiendo tiempo o dinero.' },
+  { icon: PenTool, title: 'Diseñamos la solución', description: 'Proponemos algo simple, claro y a tu medida.' },
+  { icon: Cpu, title: 'Desarrollamos', description: 'Construimos la solución con foco en calidad.' },
+  { icon: Rocket, title: 'Implementamos', description: 'La ponemos a funcionar en tu negocio real.' },
+  { icon: LifeBuoy, title: 'Soporte', description: 'Te acompañamos después de la entrega.' },
+];
+
+export type Idea = {
+  icon: LucideIcon;
+  title: string;
+};
+
+export const ideas: Idea[] = [
+  { icon: Bell, title: 'Recordatorios automáticos' },
+  { icon: CreditCard, title: 'Cobros automáticos' },
+  { icon: MessageSquare, title: 'Chatbots' },
+  { icon: Repeat, title: 'Seguimiento de clientes' },
+  { icon: CalendarClock, title: 'Agenda inteligente' },
+  { icon: Package, title: 'Control de stock' },
+  { icon: BarChart3, title: 'Reportes automáticos' },
+  { icon: Mail, title: 'Emails automáticos' },
+  { icon: MonitorSmartphone, title: 'Paneles en tiempo real' },
+  { icon: FolderCog, title: 'Gestión documental' },
+  { icon: ClipboardList, title: 'Automatización de tareas repetitivas' },
+  { icon: Headphones, title: 'Atención al cliente 24/7' },
+];
+
+export type FAQItem = { question: string; answer: string };
+
+export const faqs: FAQItem[] = [
+  {
+    question: '¿Necesito cambiar mi sistema actual?',
+    answer: 'No. En la mayoría de los casos automatizamos e integramos lo que ya usás, sin obligarte a migrar todo de cero.',
+  },
+  {
+    question: '¿Funciona con WhatsApp?',
+    answer: 'Sí. WhatsApp es uno de los canales más usados en las automatizaciones que desarrollo, junto con Email y Telegram.',
+  },
+  {
+    question: '¿Cuánto demora?',
+    answer: 'Depende del proyecto. Una automatización simple puede estar lista en pocos días; un sistema completo lleva algunas semanas. Te doy un plazo claro después de la reunión inicial.',
+  },
+  {
+    question: '¿Puedo automatizar cualquier proceso?',
+    answer: 'La mayoría de los procesos repetitivos y basados en reglas se pueden automatizar. En la reunión inicial evaluamos qué tiene más impacto para tu negocio.',
+  },
+  {
+    question: '¿También desarrollás páginas web?',
+    answer: 'Sí. Landing pages, sitios institucionales, tiendas online y sistemas web a medida, todo con foco en convertir visitantes en clientes.',
+  },
+  {
+    question: '¿Ofrecés soporte?',
+    answer: 'Sí, todo proyecto incluye acompañamiento posterior a la entrega para resolver dudas y ajustes.',
+  },
+];
