@@ -12,9 +12,9 @@ function LinkedinIcon({ size = 18, className = '' }: { size?: number; className?
   );
 }
 
-const WHATSAPP_NUMBER = '5493810000000'; // reemplazar por el número real
-const EMAIL = 'mariano@example.com'; // reemplazar por el email real
-const LINKEDIN_URL = 'https://www.linkedin.com/in/mariano-gonzalez';
+const WHATSAPP_NUMBER = '5493815866682'; // reemplazar por el número real
+const EMAIL = 'marianoemgonzalez1@gmail.com'; // reemplazar por el email real
+const LINKEDIN_URL = 'https://www.linkedin.com/in/mariano-gonzález-709288237?utm_source=share_via&utm_content=profile&utm_medium=member_ios';
 const CALENDLY_URL = 'https://calendly.com/mariano-gonzalez';
 
 const channels = [
