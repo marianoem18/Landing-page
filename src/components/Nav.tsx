@@ -7,7 +7,6 @@ const links = [
   { href: '#proyectos', label: 'Proyectos' },
   { href: '#rubros', label: 'Rubros' },
   { href: '#proceso', label: 'Cómo trabajamos' },
-  { href: '#ideas', label: 'Ideas' },
   { href: '#faq', label: 'Preguntas' },
 ];
 

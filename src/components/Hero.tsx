@@ -73,7 +73,7 @@ export default function Hero() {
       </div>
 
       <motion.a
-        href="#problemas"
+        href="#servicios"
         aria-label="Ir a la siguiente sección"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, y: [0, 6, 0] }}

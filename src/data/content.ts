@@ -1,52 +1,11 @@
 import type { LucideIcon } from 'lucide-react';
 import {
-  Clock, MessageCircleQuestion, Globe, Gauge, FileSpreadsheet, UserX,
-  Workflow, MessageSquare, Mail, ClipboardList, BarChart3, Plug,
-  Bot, Headphones, Cpu, LayoutDashboard,
+  Workflow, Globe, Plug,
+  Bot, Cpu, LayoutDashboard,
   UtensilsCrossed, Dumbbell, Store, Stethoscope, PawPrint, Home,
   Hotel, GraduationCap, Trophy, Wrench, HardHat, Pill, Scale, Calculator, Briefcase,
   PhoneCall, ScanSearch, PenTool, Rocket, LifeBuoy,
-  Bell, CreditCard, CalendarClock, Package, MonitorSmartphone, FolderCog, Repeat,
 } from 'lucide-react';
-
-export type Problem = {
-  icon: LucideIcon;
-  problem: string;
-  solution: string;
-};
-
-export const problems: Problem[] = [
-  {
-    icon: Clock,
-    problem: 'Perdés horas haciendo tareas repetitivas.',
-    solution: 'Automatizamos esas tareas para que se hagan solas, todos los días.',
-  },
-  {
-    icon: MessageCircleQuestion,
-    problem: 'Respondés siempre las mismas consultas.',
-    solution: 'Un asistente inteligente responde por vos, al instante y las 24 horas.',
-  },
-  {
-    icon: Globe,
-    problem: 'No tenés una página profesional.',
-    solution: 'Diseñamos un sitio que genera confianza desde el primer segundo.',
-  },
-  {
-    icon: Gauge,
-    problem: 'Tus procesos son lentos.',
-    solution: 'Ordenamos y conectamos cada paso para que todo fluya más rápido.',
-  },
-  {
-    icon: FileSpreadsheet,
-    problem: 'Usás demasiados Excel sueltos.',
-    solution: 'Centralizamos todo en un panel simple, claro y siempre actualizado.',
-  },
-  {
-    icon: UserX,
-    problem: 'Perdés clientes por falta de seguimiento.',
-    solution: 'Automatizamos recordatorios y seguimientos para que nadie se pierda.',
-  },
-];
 
 export type ServiceGroup = {
   icon: LucideIcon;
@@ -125,26 +84,6 @@ export const processSteps: ProcessStep[] = [
   { icon: Cpu, title: 'Desarrollamos', description: 'Construimos la solución con foco en calidad.' },
   { icon: Rocket, title: 'Implementamos', description: 'La ponemos a funcionar en tu negocio real.' },
   { icon: LifeBuoy, title: 'Soporte', description: 'Te acompañamos después de la entrega.' },
-];
-
-export type Idea = {
-  icon: LucideIcon;
-  title: string;
-};
-
-export const ideas: Idea[] = [
-  { icon: Bell, title: 'Recordatorios automáticos' },
-  { icon: CreditCard, title: 'Cobros automáticos' },
-  { icon: MessageSquare, title: 'Chatbots' },
-  { icon: Repeat, title: 'Seguimiento de clientes' },
-  { icon: CalendarClock, title: 'Agenda inteligente' },
-  { icon: Package, title: 'Control de stock' },
-  { icon: BarChart3, title: 'Reportes automáticos' },
-  { icon: Mail, title: 'Emails automáticos' },
-  { icon: MonitorSmartphone, title: 'Paneles en tiempo real' },
-  { icon: FolderCog, title: 'Gestión documental' },
-  { icon: ClipboardList, title: 'Automatización de tareas repetitivas' },
-  { icon: Headphones, title: 'Atención al cliente 24/7' },
 ];
 
 export type FAQItem = { question: string; answer: string };

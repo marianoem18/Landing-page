@@ -1,11 +1,9 @@
 import Nav from './components/Nav';
 import Hero from './components/Hero';
-import Problems from './components/Problems';
 import Services from './components/Services';
 import Projects from './components/Projects';
 import Industries from './components/Industries';
 import Process from './components/Process';
-import Ideas from './components/Ideas';
 import FAQ from './components/FAQ';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -16,12 +14,10 @@ export default function App() {
       <Nav />
       <main>
         <Hero />
-        <Problems />
         <Services />
         <Projects />
         <Industries />
         <Process />
-        <Ideas />
         <FAQ />
         <Contact />
       </main>

@@ -1,0 +1,30 @@
+﻿# Dependencies
+node_modules/
+
+# Build output
+dist/
+dist-ssr/
+
+# Lock files (large, rarely needed for editing)
+package-lock.json
+
+# Environment & secrets
+.env
+.env.*
+
+# Git history
+.git/
+
+# Editor & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Logs & cache
+*.log
+.cache/
+.vite/
+
+# Coverage & test artifacts
+coverage/
