@@ -29,7 +29,7 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
           className="font-display font-semibold text-[2.15rem] leading-[1.14] sm:text-4xl sm:leading-[1.15] lg:text-[3.4rem] lg:leading-[1.15] max-w-4xl text-gradient tracking-tight"
         >
-          Ayudo a negocios a ahorrar tiempo, vender más y automatizar procesos mediante Inteligencia Artificial.
+          Menos planillas, menos tareas repetitivas, más tiempo para tu negocio.
         </motion.h1>
 
         <motion.p
@@ -38,7 +38,7 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.16, ease: [0.16, 1, 0.3, 1] }}
           className="mt-6 text-base sm:text-lg text-text-muted max-w-xl leading-relaxed"
         >
-          Desarrollo automatizaciones, sistemas personalizados, asistentes inteligentes y páginas web para que puedas enfocarte en hacer crecer tu negocio.
+          Desarrollo sistemas de gestión, turnos online, asistentes que responden por vos y páginas web. Tecnología a medida con Inteligencia Artificial, explicada en simple.
         </motion.p>
 
         <motion.div
