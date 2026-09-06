@@ -12,8 +12,8 @@ function LinkedinIcon({ size = 18, className = '' }: { size?: number; className?
   );
 }
 
-const WHATSAPP_NUMBER = '5493815866682'; // reemplazar por el número real
-const EMAIL = 'marianoemgonzalez1@gmail.com'; // reemplazar por el email real
+const WHATSAPP_NUMBER = '5493815866682';
+const EMAIL = 'marianoemgonzalez1@gmail.com';
 const LINKEDIN_URL = 'https://www.linkedin.com/in/mariano-gonz%C3%A1lez-709288237/';
 const CALENDLY_URL = 'https://calendly.com/marianoemgonzalez1/30min';
 
@@ -47,7 +47,7 @@ export default function Contact() {
     e.preventDefault();
     const text = `Hola Mariano, soy ${name || '(nombre)'}${
       business ? ` de ${business}` : ''
-    }. ${message || 'Quiero automatizar mi negocio, ¿hablamos?'}`;
+    }. ${message || 'Quiero mejorar la gestión de mi negocio, ¿hablamos?'}`;
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, '_blank');
   };
 
@@ -57,7 +57,7 @@ export default function Contact() {
         <Reveal>
           <span className="eyebrow">Hablemos</span>
           <h2 className="mt-3 font-display font-semibold text-[1.75rem] sm:text-4xl tracking-tight max-w-xl">
-            Contame sobre tu negocio y veamos qué podemos automatizar
+            Contame sobre tu negocio y veamos cómo podemos ayudarte
           </h2>
           <p className="mt-4 text-text-muted max-w-lg leading-relaxed">
             Escribime directamente o dejá tus datos y te respondo a la brevedad.
@@ -99,14 +99,14 @@ export default function Contact() {
               </div>
               <div>
                 <label htmlFor="message" className="text-sm font-medium">
-                  Contame qué te gustaría automatizar
+                  ¿Qué te gustaría resolver?
                 </label>
                 <textarea
                   id="message"
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   rows={4}
-                  placeholder="Ej: quiero automatizar los turnos y recordatorios por WhatsApp"
+                  placeholder="Ej: necesito un sistema de turnos y recordatorios por WhatsApp"
                   className="mt-2 w-full rounded-xl border border-border bg-bg px-4 py-3 text-sm placeholder:text-text-dim focus:border-cyan/50 transition-colors resize-none"
                 />
               </div>

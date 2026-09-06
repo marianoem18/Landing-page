@@ -8,7 +8,7 @@ export default function Industries() {
         <Reveal>
           <span className="eyebrow">Soluciones por tipo de negocio</span>
           <h2 className="mt-3 font-display font-semibold text-[1.75rem] sm:text-4xl tracking-tight max-w-xl">
-            Sea cual sea tu rubro, hay una automatización esperando
+            Sea cual sea tu rubro, hay una solución a tu medida
           </h2>
         </Reveal>
 

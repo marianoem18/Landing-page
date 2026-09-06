@@ -61,7 +61,7 @@ export default function Nav() {
           href="#contacto"
           className="hidden md:inline-flex items-center rounded-full bg-text text-bg text-sm font-medium px-4 py-2 hover:bg-cyan transition-colors"
         >
-          Solicitar reunión
+          Escríbeme
         </a>
 
         <button
@@ -99,7 +99,7 @@ export default function Nav() {
                 onClick={() => closeAnd()}
                 className="mt-4 text-center rounded-full bg-text text-bg text-sm font-medium px-4 py-3"
               >
-                Solicitar reunión
+                Escríbeme
               </a>
             </div>
           </motion.div>

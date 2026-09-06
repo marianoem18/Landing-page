@@ -29,7 +29,7 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
           className="font-display font-semibold text-[2.15rem] leading-[1.14] sm:text-4xl sm:leading-[1.15] lg:text-[3.4rem] lg:leading-[1.15] max-w-4xl text-gradient tracking-tight"
         >
-          Menos planillas, menos tareas repetitivas, más tiempo para tu negocio.
+          Ayudo a negocios a ahorrar tiempo y vender más con sistemas que hacen el trabajo pesado por ti.
         </motion.h1>
 
         <motion.p
@@ -38,7 +38,7 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.16, ease: [0.16, 1, 0.3, 1] }}
           className="mt-6 text-base sm:text-lg text-text-muted max-w-xl leading-relaxed"
         >
-          Desarrollo sistemas de gestión, turnos online, asistentes que responden por vos y páginas web. Tecnología a medida con Inteligencia Artificial, explicada en simple.
+          Menos planillas, menos tareas repetitivas, más tiempo para tu negocio.
         </motion.p>
 
         <motion.div
@@ -51,7 +51,7 @@ export default function Hero() {
             href="#contacto"
             className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-blue to-cyan text-bg font-medium text-[15px] px-6 py-3.5 shadow-[0_0_30px_-8px_rgba(79,209,255,0.55)] hover:shadow-[0_0_38px_-6px_rgba(79,209,255,0.75)] transition-shadow"
           >
-            Solicitar una reunión
+            Escríbeme
             <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
           </a>
           <a

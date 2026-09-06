@@ -4,7 +4,7 @@ import type { LucideIcon } from 'lucide-react';
 import {
   ArrowUpRight, X, Zap, Users2, ShieldCheck,
   Dumbbell, Wallet, BarChart3, DatabaseBackup, KeyRound,
-  Car, Boxes, Receipt,
+  Car, Boxes, Receipt, FileText,
 } from 'lucide-react';
 import Reveal from './Reveal';
 import demoAlpha from '../assets/demo-alpha.png';
@@ -50,7 +50,7 @@ const projects: Project[] = [
     highlights: [
       { icon: Zap, text: 'Check-in por DNI en segundos, sin planillas ni personal extra' },
       { icon: Users2, text: 'Gestión de socios, pagos y vencimientos en un solo panel' },
-      { icon: ShieldCheck, text: 'Accesos por rol: administrador y empleado' },
+      { icon: ShieldCheck, text: 'Accesos para administrador y empleado' },
     ],
     link: { href: 'https://gimnasio-demo-phi.vercel.app', label: 'Ver sitio' },
   },
@@ -91,7 +91,7 @@ const projects: Project[] = [
     title: 'ElectroMecánica — Sistema de gestión para taller',
     badge: 'En uso todos los días',
     description:
-      'Sistema a medida para un taller electromecánico donde el trabajo es el eje: ingreso del vehículo, orden de trabajo, avance de estados, presupuesto y entrega con recibo e impacto en caja, todo en una sola operación.',
+      'Sistema a medida para un taller electromecánico donde el trabajo es el eje: ingreso del vehículo, orden de trabajo, avance de estados y entrega con impacto en caja. Genera fichas de ingreso, recibos y presupuestos personalizados, todo en una sola operación.',
     images: [
       {
         src: demoMecanica1,
@@ -105,6 +105,7 @@ const projects: Project[] = [
       },
     ],
     highlights: [
+      { icon: FileText, text: 'Fichas de ingreso, recibos y presupuestos personalizados' },
       { icon: Car, text: 'Clientes y vehículos con historial de trabajos y presupuestos' },
       { icon: Boxes, text: 'Stock por movimientos y gestión de proveedores' },
       { icon: Receipt, text: 'Cierre diario de caja y accesos separados para dueño y empleados' },

@@ -43,7 +43,7 @@ export const serviceGroups: ServiceGroup[] = [
     icon: Plug,
     title: 'Integraciones',
     description: 'Todo tu ecosistema digital hablando entre sí, sin cargar datos a mano.',
-    items: ['WhatsApp', 'Telegram', 'Gmail', 'Google Calendar', 'Mercado Pago', 'Stripe', 'APIs', 'CRM'],
+    items: ['WhatsApp', 'Telegram', 'Gmail', 'Google Calendar', 'Mercado Pago', 'Stripe', 'Agenda de clientes', 'Sistemas existentes'],
   },
 ];
 
@@ -102,8 +102,8 @@ export const faqs: FAQItem[] = [
     answer: 'Depende del proyecto. Una automatización simple puede estar lista en pocos días; un sistema completo lleva algunas semanas. Te doy un plazo claro después de la reunión inicial.',
   },
   {
-    question: '¿Puedo automatizar cualquier proceso?',
-    answer: 'La mayoría de los procesos repetitivos y basados en reglas se pueden automatizar. En la reunión inicial evaluamos qué tiene más impacto para tu negocio.',
+    question: '¿Qué tipo de tareas se pueden resolver con un sistema?',
+    answer: 'Casi todo lo que hoy hacés a mano y se repite: turnos, cobros, recordatorios, stock, reportes o atención por WhatsApp. En la primera charla vemos qué tiene más impacto para tu negocio.',
   },
   {
     question: '¿También desarrollás páginas web?',

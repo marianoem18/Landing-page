@@ -16,7 +16,7 @@ export default function Footer() {
           </div>
         </div>
         <p className="text-xs text-text-dim">
-          © {new Date().getFullYear()} · Hecho con React &amp; Tailwind
+          © {new Date().getFullYear()} · Hecho en Tucumán, Argentina
         </p>
       </div>
     </footer>
