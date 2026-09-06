@@ -24,7 +24,6 @@ type Project = {
   description: string;
   images: ProjectImage[];
   highlights: Highlight[];
-  stack: string[];
   link?: { href: string; label: string };
 };
 
@@ -33,7 +32,7 @@ const projects: Project[] = [
     id: 'lalygym',
     title: 'LalyGym — Sistema de gestión para gimnasios',
     description:
-      'Check-in rápido, control de socios y pagos, backups automáticos y roles de acceso, todo en un panel simple pensado para el día a día del gimnasio.',
+      'Check-in rápido, control de socios y pagos, copias de seguridad automáticas y accesos por puesto, todo en un panel simple pensado para el día a día del gimnasio.',
     images: [
       {
         src: '/projects/lalygym-checkin.png',
@@ -51,15 +50,14 @@ const projects: Project[] = [
       { icon: Users2, text: 'Gestión de socios, pagos y vencimientos en un solo panel' },
       { icon: ShieldCheck, text: 'Accesos por rol: administrador y empleado' },
     ],
-    stack: ['React', 'Node.js', 'Express', 'SQLite', 'JWT', 'Railway'],
     link: { href: 'https://gimnasio-demo-phi.vercel.app', label: 'Ver sitio' },
   },
   {
     id: 'gimnasios',
     title: 'Gestión integral para gimnasios',
-    badge: '2 sistemas en producción',
+    badge: 'Funcionando en 2 gimnasios',
     description:
-      'La evolución del sistema de LalyGym, muchísimo más completa, hoy funcionando en dos gimnasios reales: AlphaGym y Strong Gym Boutique. Monorepo con frontend en React + Vite + Tailwind y API en Node.js + Express sobre SQLite, con autenticación JWT y roles admin / empleado. En producción con frontend en Vercel y backend en Railway.',
+      'La evolución del sistema de LalyGym, muchísimo más completa, hoy funcionando todos los días en dos gimnasios reales: AlphaGym y Strong Gym Boutique. Cubre toda la operación del gimnasio: socios, planes, cobros, kiosco, caja y reportes, con accesos separados para administrador y empleados.',
     images: [
       {
         src: demoAlpha,
@@ -82,17 +80,16 @@ const projects: Project[] = [
       { icon: Dumbbell, text: 'Planes y membresías, con deudas y vencimientos al día' },
       { icon: Wallet, text: 'Cobros de gym y kiosco, con cuenta corriente por socio' },
       { icon: BarChart3, text: 'Caja diaria con egresos y reportes para el administrador' },
-      { icon: DatabaseBackup, text: 'Cierre de caja y backup automático diario, con copia off-site en buckets R2' },
-      { icon: KeyRound, text: 'Permisos por rol y migración de datos desde el sistema anterior' },
+      { icon: DatabaseBackup, text: 'Cierre de caja y copia de seguridad automática todos los días' },
+      { icon: KeyRound, text: 'Permisos según el puesto de cada empleado, con todos los datos del sistema anterior ya cargados' },
     ],
-    stack: ['React', 'Vite', 'Tailwind', 'Node.js', 'Express', 'SQLite', 'JWT', 'Vercel', 'Railway', 'R2'],
   },
   {
     id: 'electromecanica',
     title: 'ElectroMecánica — Sistema de gestión para taller',
-    badge: 'En producción',
+    badge: 'En uso todos los días',
     description:
-      'Sistema a medida para un taller electromecánico donde el trabajo es el eje: ingreso del vehículo, orden de trabajo, avance de estados, presupuesto y entrega con recibo e impacto en caja, todo en una sola operación. Desarrollado con React, Node.js + Express y SQLite, con autenticación JWT.',
+      'Sistema a medida para un taller electromecánico donde el trabajo es el eje: ingreso del vehículo, orden de trabajo, avance de estados, presupuesto y entrega con recibo e impacto en caja, todo en una sola operación.',
     images: [
       {
         src: demoMecanica1,
@@ -108,9 +105,8 @@ const projects: Project[] = [
     highlights: [
       { icon: Car, text: 'Clientes y vehículos con historial de trabajos y presupuestos' },
       { icon: Boxes, text: 'Stock por movimientos y gestión de proveedores' },
-      { icon: Receipt, text: 'Cierre diario de caja y roles de dueño y empleado' },
+      { icon: Receipt, text: 'Cierre diario de caja y accesos separados para dueño y empleados' },
     ],
-    stack: ['React', 'Node.js', 'Express', 'SQLite', 'JWT'],
   },
 ];
 
@@ -269,17 +265,6 @@ function ProjectBlock({ project, onOpenImage }: { project: Project; onOpenImage:
               </div>
             ))}
           </div>
-
-          <div className="mt-6 flex flex-wrap gap-2">
-            {project.stack.map((s) => (
-              <span
-                key={s}
-                className="text-xs font-mono text-text-muted border border-border-soft rounded-full px-2.5 py-1"
-              >
-                {s}
-              </span>
-            ))}
-          </div>
         </div>
       </Reveal>
     </div>
@@ -303,7 +288,7 @@ export default function Projects() {
             Esto no son demos: son sistemas vendidos y en uso
           </h2>
           <p className="mt-4 text-text-muted max-w-lg leading-relaxed">
-            Sistemas de gestión que desarrollé para negocios reales — gimnasios y un taller electromecánico — hoy funcionando en producción todos los días.
+            Sistemas de gestión que desarrollé para negocios reales — gimnasios y un taller electromecánico — que hoy se usan todos los días.
           </p>
         </Reveal>
 
