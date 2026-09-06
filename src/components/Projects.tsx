@@ -12,6 +12,8 @@ import demoAlpha1 from '../assets/demo-alpha1.png';
 import demoStrong from '../assets/demo-strong.png';
 import demoMecanica from '../assets/demo-mecanica.png';
 import demoMecanica1 from '../assets/demo-mecanica1.png';
+import lalygymCheckin from '../assets/lalygym-checkin.png';
+import lalygymSocios from '../assets/lalygym-socios.png';
 
 type Highlight = { icon: LucideIcon; text: string };
 
@@ -35,12 +37,12 @@ const projects: Project[] = [
       'Check-in rápido, control de socios y pagos, copias de seguridad automáticas y accesos por puesto, todo en un panel simple pensado para el día a día del gimnasio.',
     images: [
       {
-        src: '/projects/lalygym-checkin.png',
+        src: lalygymCheckin,
         alt: 'Pantalla de check-in por DNI de LalyGym',
         frameLabel: 'https://gimnasio-demo-phi.vercel.app',
       },
       {
-        src: '/projects/lalygym-socios.png',
+        src: lalygymSocios,
         alt: 'Panel de gestión de socios de LalyGym (datos anonimizados)',
         frameLabel: 'https://gimnasio-demo-phi.vercel.app',
       },
