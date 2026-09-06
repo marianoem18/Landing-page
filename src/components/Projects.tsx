@@ -1,7 +1,8 @@
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 import type { LucideIcon } from 'lucide-react';
 import {
-  ArrowUpRight, Zap, Users2, ShieldCheck,
+  ArrowUpRight, X, Zap, Users2, ShieldCheck,
   Dumbbell, Wallet, BarChart3, DatabaseBackup, KeyRound,
   Car, Boxes, Receipt,
 } from 'lucide-react';
@@ -113,13 +114,28 @@ const projects: Project[] = [
   },
 ];
 
-function BrowserFrame({ src, alt, frameLabel, delay }: { src: string; alt: string; frameLabel: string; delay: number }) {
+function BrowserFrame({
+  src,
+  alt,
+  frameLabel,
+  delay,
+  onOpen,
+}: {
+  src: string;
+  alt: string;
+  frameLabel: string;
+  delay: number;
+  onOpen: () => void;
+}) {
   return (
     <Reveal delay={delay} y={24}>
-      <motion.div
+      <motion.button
+        type="button"
+        onClick={onOpen}
         whileHover={{ y: -4 }}
         transition={{ duration: 0.25 }}
-        className="rounded-2xl border border-border bg-surface/60 overflow-hidden shadow-[0_20px_60px_-20px_rgba(0,0,0,0.6)]"
+        className="block w-full text-left rounded-2xl border border-border bg-surface/60 overflow-hidden shadow-[0_20px_60px_-20px_rgba(0,0,0,0.6)] cursor-pointer group"
+        aria-label={`Ver ${alt} en grande`}
       >
         <div className="flex items-center gap-1.5 px-4 py-3 border-b border-border-soft bg-bg/40">
           <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
@@ -127,13 +143,76 @@ function BrowserFrame({ src, alt, frameLabel, delay }: { src: string; alt: strin
           <span className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
           <span className="ml-3 text-xs font-mono text-text-dim truncate">{frameLabel}</span>
         </div>
-        <img src={src} alt={alt} className="w-full h-auto block" loading="lazy" />
-      </motion.div>
+        <img src={src} alt={alt} className="w-full h-auto block transition-transform duration-300 group-hover:scale-[1.01]" />
+      </motion.button>
     </Reveal>
   );
 }
 
-function ProjectBlock({ project }: { project: Project }) {
+function ImageLightbox({ image, onClose }: { image: ProjectImage; onClose: () => void }) {
+  useEffect(() => {
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', onKeyDown);
+
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      window.removeEventListener('keydown', onKeyDown);
+    };
+  }, [onClose]);
+
+  return (
+    <motion.div
+      role="dialog"
+      aria-modal="true"
+      aria-label={image.alt}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.2 }}
+    >
+      <button
+        type="button"
+        aria-label="Cerrar imagen"
+        onClick={onClose}
+        className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+      />
+
+      <motion.div
+        initial={{ opacity: 0, scale: 0.96, y: 12 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.96, y: 12 }}
+        transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+        className="relative z-10 w-full max-w-6xl max-h-[90vh] rounded-2xl border border-border bg-surface overflow-hidden shadow-[0_30px_80px_-20px_rgba(0,0,0,0.75)]"
+      >
+        <div className="flex items-center gap-1.5 px-4 py-3 border-b border-border-soft bg-bg/60">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
+          <span className="w-2.5 h-2.5 rounded-full bg-[#febc2e]" />
+          <span className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
+          <span className="ml-3 text-xs font-mono text-text-dim truncate">{image.frameLabel}</span>
+          <button
+            type="button"
+            onClick={onClose}
+            className="ml-auto inline-flex items-center justify-center w-9 h-9 rounded-full border border-border text-text hover:border-text-dim hover:bg-bg transition-colors"
+            aria-label="Cerrar"
+          >
+            <X size={16} />
+          </button>
+        </div>
+        <div className="overflow-auto max-h-[calc(90vh-3.25rem)] bg-bg">
+          <img src={image.src} alt={image.alt} className="w-full h-auto block" />
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
+
+function ProjectBlock({ project, onOpenImage }: { project: Project; onOpenImage: (image: ProjectImage) => void }) {
   const imageCols = project.images.length === 3 ? 'md:grid-cols-3' : 'md:grid-cols-2';
   const highlightCols = project.highlights.length > 3 ? 'sm:grid-cols-2 lg:grid-cols-3' : 'sm:grid-cols-3';
 
@@ -141,7 +220,14 @@ function ProjectBlock({ project }: { project: Project }) {
     <div>
       <div className={`grid grid-cols-1 ${imageCols} gap-6 sm:gap-8`}>
         {project.images.map((img, i) => (
-          <BrowserFrame key={img.src} src={img.src} alt={img.alt} frameLabel={img.frameLabel} delay={i * 0.1} />
+          <BrowserFrame
+            key={img.src}
+            src={img.src}
+            alt={img.alt}
+            frameLabel={img.frameLabel}
+            delay={i * 0.1}
+            onOpen={() => onOpenImage(img)}
+          />
         ))}
       </div>
 
@@ -201,6 +287,8 @@ function ProjectBlock({ project }: { project: Project }) {
 }
 
 export default function Projects() {
+  const [openImage, setOpenImage] = useState<ProjectImage | null>(null);
+
   return (
     <section id="proyectos" className="relative py-20 sm:py-28 overflow-hidden">
       <div
@@ -221,10 +309,14 @@ export default function Projects() {
 
         <div className="mt-12 flex flex-col gap-16 sm:gap-20">
           {projects.map((project) => (
-            <ProjectBlock key={project.id} project={project} />
+            <ProjectBlock key={project.id} project={project} onOpenImage={setOpenImage} />
           ))}
         </div>
       </div>
+
+      <AnimatePresence>
+        {openImage && <ImageLightbox image={openImage} onClose={() => setOpenImage(null)} />}
+      </AnimatePresence>
     </section>
   );
 }
