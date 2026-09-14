@@ -5,6 +5,7 @@ import {
   ArrowUpRight, X, Zap, Users2, ShieldCheck,
   Dumbbell, Wallet, BarChart3, DatabaseBackup, KeyRound,
   Car, Boxes, Receipt, FileText,
+  Scissors, Percent, MessageCircle,
 } from 'lucide-react';
 import Reveal from './Reveal';
 import demoAlpha from '../assets/demo-alpha.png';
@@ -14,6 +15,8 @@ import demoMecanica from '../assets/demo-mecanica.png';
 import demoMecanica1 from '../assets/demo-mecanica1.png';
 import lalygymCheckin from '../assets/lalygym-checkin.png';
 import lalygymSocios from '../assets/lalygym-socios.png';
+import sectorb1 from '../assets/sectorb1.png';
+import sectorb2 from '../assets/sectorb2.png';
 
 type Highlight = { icon: LucideIcon; text: string };
 
@@ -109,6 +112,32 @@ const projects: Project[] = [
       { icon: Car, text: 'Clientes y vehículos con historial de trabajos y presupuestos' },
       { icon: Boxes, text: 'Stock por movimientos y gestión de proveedores' },
       { icon: Receipt, text: 'Cierre diario de caja y accesos separados para dueño y empleados' },
+    ],
+  },
+  {
+    id: 'sectorb',
+    title: 'Sector B — Sistema de gestión para barbería',
+    badge: 'En uso todos los días',
+    description:
+      'Sistema a medida para Sector B Barbería: cada corte queda registrado, cada barbero tiene su porcentaje y la caja cierra todos los días con copia de seguridad. A las dos semanas, el cliente recibe un recordatorio por WhatsApp para volver.',
+    images: [
+      {
+        src: sectorb1,
+        alt: 'Inicio de Sector B con cortes del día y ganancia por barbero',
+        frameLabel: 'Sector B — inicio y cortes del día',
+      },
+      {
+        src: sectorb2,
+        alt: 'Caja diaria de Sector B con ingresos, egresos y medios de pago',
+        frameLabel: 'Sector B — caja diaria',
+      },
+    ],
+    highlights: [
+      { icon: Scissors, text: 'Registro de cada corte, con la jornada y la ganancia de cada barbero a la vista' },
+      { icon: Percent, text: 'Porcentaje que le corresponde a cada barbero, más adelantos del día' },
+      { icon: Wallet, text: 'Caja diaria con ingresos, egresos y totales en vivo por efectivo, transferencia y tarjeta' },
+      { icon: DatabaseBackup, text: 'Cierre de caja y copia de seguridad automática todos los días' },
+      { icon: MessageCircle, text: 'Recordatorio por WhatsApp al cliente dos semanas después del servicio' },
     ],
   },
 ];
@@ -291,7 +320,7 @@ export default function Projects() {
             Esto no son demos: son sistemas vendidos y en uso
           </h2>
           <p className="mt-4 text-text-muted max-w-lg leading-relaxed">
-            Sistemas de gestión que desarrollé para negocios reales — gimnasios y un taller electromecánico — que hoy se usan todos los días.
+            Sistemas de gestión que desarrollé para negocios reales — gimnasios, una barbería y un taller electromecánico — que hoy se usan todos los días.
           </p>
         </Reveal>
 

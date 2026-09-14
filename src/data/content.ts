@@ -2,7 +2,7 @@ import type { LucideIcon } from 'lucide-react';
 import {
   Workflow, Globe, Plug,
   Bot, Cpu, LayoutDashboard,
-  UtensilsCrossed, Dumbbell, Store, Stethoscope, PawPrint, Home,
+  UtensilsCrossed, Dumbbell, Scissors, Store, Stethoscope, PawPrint, Home,
   Hotel, GraduationCap, Trophy, Wrench, HardHat, Pill, Scale, Calculator, Briefcase,
   PhoneCall, ScanSearch, PenTool, Rocket, LifeBuoy,
 } from 'lucide-react';
@@ -56,6 +56,7 @@ export type Industry = {
 export const industries: Industry[] = [
   { icon: UtensilsCrossed, name: 'Restaurante', example: 'Reservas y pedidos por WhatsApp automáticos' },
   { icon: Dumbbell, name: 'Gimnasio', example: 'Recordatorios de pago y control de asistencia' },
+  { icon: Scissors, name: 'Barbería', example: 'Cortes, comisiones de barberos y recordatorios por WhatsApp' },
   { icon: Store, name: 'Tienda', example: 'Stock sincronizado y catálogo online' },
   { icon: Stethoscope, name: 'Consultorio', example: 'Agenda de turnos y confirmaciones automáticas' },
   { icon: PawPrint, name: 'Veterinaria', example: 'Historial de mascotas y recordatorios de vacunas' },
