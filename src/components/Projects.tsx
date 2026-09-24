@@ -17,6 +17,7 @@ import lalygymCheckin from '../assets/lalygym-checkin.png';
 import lalygymSocios from '../assets/lalygym-socios.png';
 import sectorb1 from '../assets/sectorb1.png';
 import sectorb2 from '../assets/sectorb2.png';
+import sectorb3 from '../assets/sectorb3.jpg';
 
 type Highlight = { icon: LucideIcon; text: string };
 
@@ -131,11 +132,17 @@ const projects: Project[] = [
         alt: 'Caja diaria de Sector B con ingresos, egresos y medios de pago',
         frameLabel: 'Sector B — caja diaria',
       },
+      {
+        src: sectorb3,
+        alt: 'Reportes semanales de Sector B con cortes, ganancia y adelantos por barbero',
+        frameLabel: 'Sector B — reportes semanales',
+      },
     ],
     highlights: [
       { icon: Scissors, text: 'Registro de cada corte, con la jornada y la ganancia de cada barbero a la vista' },
       { icon: Percent, text: 'Porcentaje que le corresponde a cada barbero, más adelantos del día' },
       { icon: Wallet, text: 'Caja diaria con ingresos, egresos y totales en vivo por efectivo, transferencia y tarjeta' },
+      { icon: BarChart3, text: 'Reportes semanales de cortes, ganancia y adelantos por barbero' },
       { icon: DatabaseBackup, text: 'Cierre de caja y copia de seguridad automática todos los días' },
       { icon: MessageCircle, text: 'Recordatorio por WhatsApp al cliente dos semanas después del servicio' },
     ],
