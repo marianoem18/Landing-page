@@ -1,60 +1,86 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Plus } from 'lucide-react';
+import { AnimatePresence, m } from 'framer-motion';
+import { PlusIcon } from '@phosphor-icons/react';
 import { faqs } from '../data/content';
-import Reveal from './Reveal';
+import { easeOutExpo, softSpring } from '../lib/motion';
+import LineReveal from './ui/LineReveal';
+import ScrambleText from './ui/ScrambleText';
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="relative py-20 sm:py-28 bg-surface/30 border-y border-border-soft">
-      <div className="mx-auto max-w-3xl px-5 sm:px-8">
-        <Reveal>
-          <span className="eyebrow">Preguntas frecuentes</span>
-          <h2 className="mt-3 font-display font-semibold text-[1.75rem] sm:text-4xl tracking-tight">
-            Lo que más me preguntan
-          </h2>
-        </Reveal>
+    <section id="faq" className="relative py-24 sm:py-32 border-t border-border">
+      <div className="mx-auto max-w-[1400px] px-5 sm:px-8 grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-12 lg:gap-20">
+        <div>
+          <div className="lg:sticky lg:top-32">
+            <span className="eyebrow">
+              <ScrambleText text="Preguntas frecuentes" />
+            </span>
+            <LineReveal
+              text="Lo que más me preguntan"
+              className="mt-5 font-display font-semibold text-[2rem] sm:text-5xl leading-[1.05] tracking-tighter max-w-[14ch]"
+            />
+          </div>
+        </div>
 
-        <div className="mt-10 divide-y divide-border-soft border-t border-b border-border-soft">
+        <ul className="border-t border-border">
           {faqs.map((f, i) => {
             const isOpen = openIndex === i;
+            const panelId = `faq-panel-${i}`;
             return (
-              <div key={f.question}>
+              <li key={f.question} className="border-b border-border">
                 <button
+                  type="button"
                   onClick={() => setOpenIndex(isOpen ? null : i)}
                   aria-expanded={isOpen}
-                  className="w-full flex items-center justify-between gap-4 py-5 text-left"
+                  aria-controls={panelId}
+                  className="group w-full grid grid-cols-[2.5rem_1fr_auto] items-center gap-4 py-6 text-left"
                 >
-                  <span className="font-medium text-[15px] sm:text-base">{f.question}</span>
-                  <motion.span
-                    animate={{ rotate: isOpen ? 45 : 0 }}
-                    transition={{ duration: 0.2 }}
-                    className="shrink-0 grid place-items-center w-7 h-7 rounded-full border border-border text-text-muted"
+                  <span
+                    className={`font-mono text-xs tabular-nums transition-colors ${
+                      isOpen ? 'text-accent' : 'text-text-dim'
+                    }`}
                   >
-                    <Plus size={14} />
-                  </motion.span>
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <span
+                    className={`font-medium text-base sm:text-lg tracking-tight transition-colors ${
+                      isOpen ? 'text-text' : 'text-text-muted group-hover:text-text'
+                    }`}
+                  >
+                    {f.question}
+                  </span>
+                  <m.span
+                    animate={{ rotate: isOpen ? 45 : 0 }}
+                    transition={softSpring}
+                    className={`grid place-items-center w-8 h-8 rounded-full border transition-colors ${
+                      isOpen ? 'border-accent/50 text-accent' : 'border-border text-text-muted'
+                    }`}
+                  >
+                    <PlusIcon size={13} />
+                  </m.span>
                 </button>
                 <AnimatePresence initial={false}>
                   {isOpen && (
-                    <motion.div
+                    <m.div
+                      id={panelId}
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.25, ease: 'easeInOut' }}
+                      transition={{ duration: 0.45, ease: easeOutExpo }}
                       className="overflow-hidden"
                     >
-                      <p className="pb-5 text-sm text-text-muted leading-relaxed max-w-xl">
+                      <p className="pb-7 pl-[calc(2.5rem+1rem)] pr-12 text-[15px] text-text-muted leading-relaxed max-w-[62ch]">
                         {f.answer}
                       </p>
-                    </motion.div>
+                    </m.div>
                   )}
                 </AnimatePresence>
-              </div>
+              </li>
             );
           })}
-        </div>
+        </ul>
       </div>
     </section>
   );

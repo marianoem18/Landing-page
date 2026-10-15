@@ -1,43 +1,141 @@
-import { serviceGroups } from '../data/content';
-import Reveal from './Reveal';
+import { useState, type PointerEvent } from 'react';
+import { AnimatePresence, m } from 'framer-motion';
+import { PlusIcon } from '@phosphor-icons/react';
+import { serviceGroups, type ServiceGroup } from '../data/content';
+import { easeOutExpo, softSpring } from '../lib/motion';
+import LineReveal from './ui/LineReveal';
+import ScrambleText from './ui/ScrambleText';
+
+function ServiceRow({
+  group,
+  index,
+  isOpen,
+  onToggle,
+  onHover,
+}: {
+  group: ServiceGroup;
+  index: number;
+  isOpen: boolean;
+  onToggle: () => void;
+  onHover: (open: boolean) => void;
+}) {
+  const panelId = `service-panel-${index}`;
+  const fromMouse = (handler: () => void) => (event: PointerEvent) => {
+    if (event.pointerType === 'mouse') handler();
+  };
+
+  return (
+    <li
+      className="relative border-t border-border"
+      onPointerEnter={fromMouse(() => onHover(true))}
+      onPointerLeave={fromMouse(() => onHover(false))}
+    >
+      <m.span
+        aria-hidden="true"
+        className="absolute left-0 right-0 -top-px h-px bg-accent origin-left"
+        initial={false}
+        animate={{ scaleX: isOpen ? 1 : 0 }}
+        transition={{ duration: 0.7, ease: easeOutExpo }}
+      />
+
+      <button
+        type="button"
+        onClick={onToggle}
+        aria-expanded={isOpen}
+        aria-controls={panelId}
+        className="w-full grid grid-cols-[2.75rem_1fr_auto] md:grid-cols-[5rem_1.1fr_1fr_auto] items-baseline gap-x-4 md:gap-x-8 py-7 sm:py-9 text-left"
+      >
+        <span
+          className={`font-mono text-sm tabular-nums transition-colors duration-300 ${
+            isOpen ? 'text-accent' : 'text-text-dim'
+          }`}
+        >
+          <ScrambleText text={String(index + 1).padStart(2, '0')} delay={index * 80} />
+        </span>
+        <m.span
+          animate={{ x: isOpen ? 8 : 0 }}
+          transition={softSpring}
+          className="font-display font-medium text-[1.65rem] sm:text-4xl leading-[1.1] tracking-tighter"
+        >
+          {group.title}
+        </m.span>
+        <span className="hidden md:block text-[15px] text-text-muted leading-relaxed max-w-[44ch]">
+          {group.description}
+        </span>
+        <m.span
+          animate={{ rotate: isOpen ? 45 : 0 }}
+          transition={softSpring}
+          className={`self-center grid place-items-center w-9 h-9 rounded-full border transition-colors duration-300 ${
+            isOpen ? 'border-accent/50 text-accent' : 'border-border text-text-muted'
+          }`}
+        >
+          <PlusIcon size={14} />
+        </m.span>
+      </button>
+
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <m.div
+            id={panelId}
+            key="panel"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.5, ease: easeOutExpo }}
+            className="overflow-hidden"
+          >
+            <div className="pb-8 sm:pb-10 pl-[calc(2.75rem+1rem)] md:pl-[calc(5rem+2rem)]">
+              <p className="md:hidden mb-5 text-[15px] text-text-muted leading-relaxed">{group.description}</p>
+              <m.ul
+                className="flex flex-wrap gap-2"
+                initial="hidden"
+                animate="show"
+                variants={{ hidden: {}, show: { transition: { staggerChildren: 0.04, delayChildren: 0.1 } } }}
+              >
+                {group.items.map((item) => (
+                  <m.li
+                    key={item}
+                    variants={{ hidden: { opacity: 0, y: 8 }, show: { opacity: 1, y: 0, transition: softSpring } }}
+                    className="font-mono text-xs text-text border border-border rounded-full px-3 py-1.5 bg-surface"
+                  >
+                    {item}
+                  </m.li>
+                ))}
+              </m.ul>
+            </div>
+          </m.div>
+        )}
+      </AnimatePresence>
+    </li>
+  );
+}
 
 export default function Services() {
-  return (
-    <section id="servicios" className="relative py-20 sm:py-28 bg-surface/30 border-y border-border-soft">
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
-        <Reveal>
-          <span className="eyebrow">Qué puedo hacer por tu negocio</span>
-          <h2 className="mt-3 font-display font-semibold text-[1.75rem] sm:text-4xl tracking-tight max-w-xl">
-            Servicios pensados para resolver, no para complicar
-          </h2>
-        </Reveal>
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-5">
+  return (
+    <section id="servicios" className="relative py-24 sm:py-32">
+      <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
+        <span className="eyebrow">
+          <ScrambleText text="Qué puedo hacer por tu negocio" />
+        </span>
+        <LineReveal
+          text="Servicios pensados para resolver, no para complicar"
+          className="mt-5 font-display font-semibold text-[2rem] sm:text-5xl leading-[1.05] tracking-tighter max-w-[20ch]"
+        />
+
+        <ul className="mt-14 sm:mt-20 border-b border-border">
           {serviceGroups.map((g, i) => (
-            <Reveal key={g.title} delay={i * 0.06}>
-              <div className="h-full rounded-2xl border border-border bg-bg/60 p-6 sm:p-7 relative overflow-hidden group">
-                <div className="pointer-events-none absolute -right-10 -top-10 w-40 h-40 rounded-full bg-blue/10 blur-3xl group-hover:bg-blue/20 transition-colors" />
-                <div className="relative">
-                  <span className="grid place-items-center w-10 h-10 rounded-xl bg-gradient-to-br from-blue/20 to-cyan/10 border border-border">
-                    <g.icon size={18} strokeWidth={1.75} className="text-cyan" />
-                  </span>
-                  <h3 className="mt-5 font-display font-semibold text-lg">{g.title}</h3>
-                  <p className="mt-2 text-sm text-text-muted leading-relaxed">{g.description}</p>
-                  <div className="mt-5 flex flex-wrap gap-2">
-                    {g.items.map((item) => (
-                      <span
-                        key={item}
-                        className="text-xs font-mono text-text-muted border border-border-soft rounded-full px-2.5 py-1"
-                      >
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </Reveal>
+            <ServiceRow
+              key={g.title}
+              group={g}
+              index={i}
+              isOpen={openIndex === i}
+              onToggle={() => setOpenIndex((cur) => (cur === i ? null : i))}
+              onHover={(open) => setOpenIndex((cur) => (open ? i : cur === i ? null : cur))}
+            />
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );
