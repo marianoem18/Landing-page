@@ -1,31 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #050608;
-  --color-surface: #0b0d12;
-  --color-surface-2: #0f1218;
-  --color-border: #1b1f27;
-  --color-border-soft: #14171f;
-  --color-text: #f3f5f7;
-  --color-text-muted: #8b93a1;
-  --color-text-dim: #565d6b;
+  --color-bg: #0b0a0f;
+  --color-surface: #121118;
+  --color-surface-2: #18161f;
+  --color-border: #25222e;
+  --color-border-soft: #1b1922;
+  --color-text: #f5f3fa;
+  --color-text-muted: #aaa5b8;
+  --color-text-dim: #817c8f;
 
-  --color-blue: #3d5afe;
-  --color-cyan: #4fd1ff;
-  --color-violet: #8b5cf6;
+  --color-accent: #a98bff;
+  --color-accent-strong: #bba3ff;
+  --color-accent-dim: rgb(169 139 255 / 0.12);
 
-  --font-display: 'Space Grotesk', 'Inter', sans-serif;
-  --font-body: 'Inter', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
-}
+  --font-display: 'Geist Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-body: 'Geist Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Geist Mono Variable', ui-monospace, monospace;
 
-html {
-  scroll-behavior: smooth;
+  --tracking-display: -0.035em;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
@@ -42,10 +38,12 @@ body {
   overflow-x: hidden;
 }
 
-::selection { background: var(--color-blue); color: white; }
+section[id] { scroll-margin-top: 96px; }
+
+::selection { background: var(--color-accent); color: var(--color-bg); }
 
 :focus-visible {
-  outline: 2px solid var(--color-cyan);
+  outline: 2px solid var(--color-accent);
   outline-offset: 3px;
   border-radius: 4px;
 }
@@ -53,24 +51,51 @@ body {
 ::-webkit-scrollbar { width: 10px; }
 ::-webkit-scrollbar-track { background: var(--color-bg); }
 ::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 8px; }
-::-webkit-scrollbar-thumb:hover { background: #2a2f3a; }
+::-webkit-scrollbar-thumb:hover { background: #3a3547; }
 
-.text-gradient {
-  background: linear-gradient(90deg, #ffffff 0%, #dfe6ff 40%, var(--color-cyan) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+h1, h2, h3 { text-wrap: balance; }
+p { text-wrap: pretty; }
+
+html { color-scheme: dark; }
+input, textarea { caret-color: var(--color-accent); }
+a { text-underline-offset: 0.2em; }
+
+/* Soft violet light used behind the hero and the final call to action. */
+.aura {
+  background:
+    radial-gradient(40% 50% at 72% 38%, rgb(169 139 255 / 0.16), transparent 70%),
+    radial-gradient(30% 40% at 90% 10%, rgb(120 90 230 / 0.12), transparent 70%);
 }
 
-.eyebrow {
-  font-family: var(--font-mono);
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-  font-size: 0.82rem;
-  color: var(--color-cyan);
+.fade-x {
+  mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
 }
 
-.noise {
-  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.035) 1px, transparent 0);
-  background-size: 26px 26px;
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+@keyframes breathe {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.8); }
 }
+
+.breathe { animation: breathe 2.2s ease-in-out infinite; }
+
+@keyframes word-rise {
+  from { transform: translateY(110%); }
+  to { transform: translateY(0); }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes console-in {
+  from { opacity: 0; transform: perspective(1200px) translateY(40px) rotateX(8deg); }
+  to { opacity: 1; transform: perspective(1200px) translateY(0) rotateX(0); }
+}
+
+.word-rise { animation: word-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.fade-up { animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.console-in { animation: console-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) both; }

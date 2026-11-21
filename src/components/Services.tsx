@@ -1,43 +1,66 @@
-import { serviceGroups } from '../data/content';
+import { m } from 'framer-motion';
+import { serviceGroups, type ServiceGroup } from '../data/content';
+import { easeOutExpo } from '../lib/motion';
+import LineReveal from './ui/LineReveal';
 import Reveal from './Reveal';
+
+function ServiceRow({ group, index }: { group: ServiceGroup; index: number }) {
+  return (
+    <m.li
+      className="group relative border-t border-border"
+      initial={{ opacity: 0, y: 18 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-60px' }}
+      transition={{ duration: 0.8, delay: index * 0.05, ease: easeOutExpo }}
+    >
+      <span
+        aria-hidden="true"
+        className="absolute left-0 right-0 -top-px h-px bg-accent origin-left scale-x-0 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100"
+      />
+
+      <div className="grid grid-cols-1 md:grid-cols-[1fr_1.15fr] gap-x-10 gap-y-4 py-8 sm:py-10">
+        <h3 className="font-display font-medium text-[1.65rem] sm:text-4xl leading-[1.1] tracking-display transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] md:group-hover:translate-x-2">
+          {group.title}
+        </h3>
+        <div>
+          <p className="text-[15px] sm:text-base text-text-muted leading-relaxed max-w-[48ch]">{group.description}</p>
+          <ul className="mt-5 flex flex-wrap gap-2">
+            {group.items.map((item) => (
+              <li
+                key={item}
+                className="text-[13px] text-text-muted border border-border rounded-full px-3 py-1 bg-surface/60 transition-colors group-hover:border-accent/25 group-hover:text-text"
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </m.li>
+  );
+}
 
 export default function Services() {
   return (
-    <section id="servicios" className="relative py-20 sm:py-28 bg-surface/30 border-y border-border-soft">
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
-        <Reveal>
-          <span className="eyebrow">Qué puedo hacer por tu negocio</span>
-          <h2 className="mt-3 font-display font-semibold text-[1.75rem] sm:text-4xl tracking-tight max-w-xl">
-            Servicios pensados para resolver, no para complicar
-          </h2>
-        </Reveal>
-
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-5">
-          {serviceGroups.map((g, i) => (
-            <Reveal key={g.title} delay={i * 0.06}>
-              <div className="h-full rounded-2xl border border-border bg-bg/60 p-6 sm:p-7 relative overflow-hidden group">
-                <div className="pointer-events-none absolute -right-10 -top-10 w-40 h-40 rounded-full bg-blue/10 blur-3xl group-hover:bg-blue/20 transition-colors" />
-                <div className="relative">
-                  <span className="grid place-items-center w-10 h-10 rounded-xl bg-gradient-to-br from-blue/20 to-cyan/10 border border-border">
-                    <g.icon size={18} strokeWidth={1.75} className="text-cyan" />
-                  </span>
-                  <h3 className="mt-5 font-display font-semibold text-lg">{g.title}</h3>
-                  <p className="mt-2 text-sm text-text-muted leading-relaxed">{g.description}</p>
-                  <div className="mt-5 flex flex-wrap gap-2">
-                    {g.items.map((item) => (
-                      <span
-                        key={item}
-                        className="text-xs font-mono text-text-muted border border-border-soft rounded-full px-2.5 py-1"
-                      >
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </Reveal>
-          ))}
+    <section id="servicios" className="relative py-24 sm:py-32">
+      <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.15fr] gap-6 lg:gap-10 items-end">
+          <LineReveal
+            text="Servicios pensados para resolver, no para complicar"
+            className="font-display font-semibold text-[2rem] sm:text-5xl leading-[1.05] tracking-display max-w-[16ch]"
+          />
+          <Reveal delay={0.15}>
+            <p className="text-text-muted leading-relaxed max-w-[48ch]">
+              Desde automatizar una tarea puntual hasta un sistema completo para tu negocio. Empezamos por lo que más tiempo te hace perder hoy.
+            </p>
+          </Reveal>
         </div>
+
+        <ul className="mt-14 sm:mt-20 border-b border-border">
+          {serviceGroups.map((g, i) => (
+            <ServiceRow key={g.title} group={g} index={i} />
+          ))}
+        </ul>
       </div>
     </section>
   );
