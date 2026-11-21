@@ -4,17 +4,21 @@ import {
   BarbellIcon, WalletIcon, ChartBarIcon, DatabaseIcon, KeyIcon,
   CarIcon, PackageIcon, ReceiptIcon, FileTextIcon,
   ScissorsIcon, PercentIcon, WhatsappLogoIcon,
+  CalendarDotsIcon, UserListIcon, TagIcon, GlobeSimpleIcon,
 } from '@phosphor-icons/react';
-import demoAlpha from '../assets/demo-alpha.png';
-import demoAlpha1 from '../assets/demo-alpha1.png';
-import demoStrong from '../assets/demo-strong.png';
-import demoMecanica from '../assets/demo-mecanica.png';
-import demoMecanica1 from '../assets/demo-mecanica1.png';
-import lalygymCheckin from '../assets/lalygym-checkin.png';
-import lalygymSocios from '../assets/lalygym-socios.png';
-import sectorb1 from '../assets/sectorb1.png';
-import sectorb2 from '../assets/sectorb2.png';
-import sectorb3 from '../assets/sectorb3.jpg';
+import demoAlpha from '../assets/demo-alpha.webp';
+import demoAlpha1 from '../assets/demo-alpha1.webp';
+import demoStrong from '../assets/demo-strong.webp';
+import demoMecanica from '../assets/demo-mecanica.webp';
+import demoMecanica1 from '../assets/demo-mecanica1.webp';
+import lalygymCheckin from '../assets/lalygym-checkin.webp';
+import lalygymSocios from '../assets/lalygym-socios.webp';
+import sectorb1 from '../assets/sectorb1.webp';
+import sectorb2 from '../assets/sectorb2.webp';
+import sectorb3 from '../assets/sectorb3.webp';
+import egAgenda from '../assets/agenda-estetica.webp';
+import egCaja from '../assets/caja-estetica.webp';
+import egLogin from '../assets/eg-estetica.webp';
 
 export type Highlight = { icon: Icon; text: string };
 
@@ -142,6 +146,37 @@ export const projects: Project[] = [
       { icon: ChartBarIcon, text: 'Reportes semanales de cortes, ganancia y adelantos por barbero' },
       { icon: DatabaseIcon, text: 'Cierre de caja y copia de seguridad automática todos los días' },
       { icon: WhatsappLogoIcon, text: 'Recordatorio por WhatsApp al cliente dos semanas después del servicio' },
+    ],
+  },
+  {
+    id: 'egestetica',
+    title: 'EG Estética y Solarium — Agenda para centro de estética',
+    description:
+      'Sistema a medida para un centro de estética: cada cabina y cada profesional tiene su propia agenda, los turnos se dan, se mueven y se confirman en segundos, y cada cobro queda registrado en la caja del día. Clientes, servicios e ingresos, todo en un solo lugar.',
+    images: [
+      {
+        src: egAgenda,
+        alt: 'Agenda del día de EG Estética con turnos por cabina y profesional',
+        frameLabel: 'EG Estética — agenda por cabina',
+      },
+      {
+        src: egCaja,
+        alt: 'Caja diaria de EG Estética con ingresos por origen y por medio de pago',
+        frameLabel: 'EG Estética — caja del día',
+      },
+      {
+        src: egLogin,
+        alt: 'Pantalla de ingreso del personal de EG Estética y Solarium',
+        frameLabel: 'EG Estética — acceso del personal',
+      },
+    ],
+    highlights: [
+      { icon: CalendarDotsIcon, text: 'Agenda por cabina y profesional: arrastrás un turno para moverlo o cambiar su duración' },
+      { icon: GlobeSimpleIcon, text: 'Reserva pública para que los clientes saquen turno solos' },
+      { icon: UserListIcon, text: 'Ficha de cada cliente con sus datos y el historial de turnos y servicios' },
+      { icon: TagIcon, text: 'Catálogo de servicios con precio y duración, para dar turnos sin errores' },
+      { icon: WalletIcon, text: 'Cobros por efectivo, transferencia y tarjeta, más packs y gift cards' },
+      { icon: ChartBarIcon, text: 'Caja diaria con cierres e ingresos por período, desde el panel principal' },
     ],
   },
 ];

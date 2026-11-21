@@ -11,7 +11,6 @@ import {
   useVelocity,
 } from 'framer-motion';
 import { industries } from '../data/content';
-import ScrambleText from './ui/ScrambleText';
 
 const BASE_VELOCITY = -2.2;
 
@@ -26,13 +25,13 @@ function Track() {
       {industries.map((name, i) => (
         <span key={name} className="flex items-center">
           <span
-            className={`px-6 sm:px-10 font-display font-medium text-4xl sm:text-6xl tracking-tighter whitespace-nowrap ${
+            className={`px-6 sm:px-10 font-display font-medium text-4xl sm:text-6xl tracking-display whitespace-nowrap ${
               i % 2 === 0 ? 'text-text' : 'text-text-dim'
             }`}
           >
             {name}
           </span>
-          <span aria-hidden="true" className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-accent rotate-45 shrink-0" />
+          <span aria-hidden="true" className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-accent shrink-0" />
         </span>
       ))}
     </div>
@@ -65,10 +64,8 @@ function IndustriesMarquee() {
   return (
     <section id="rubros" aria-label="Rubros" className="relative border-y border-border py-10 sm:py-14 overflow-hidden">
       <div className="mx-auto max-w-[1400px] px-5 sm:px-8 mb-8 sm:mb-10 flex items-center justify-between gap-6">
-        <span className="eyebrow">
-          <ScrambleText text="Soluciones por tipo de negocio" />
-        </span>
-        <span className="hidden sm:block font-mono text-xs text-text-dim">{industries.length} rubros</span>
+        <p className="text-sm text-text-muted">Sistemas a medida para cada tipo de negocio</p>
+        <span className="hidden sm:block text-sm text-text-dim tabular-nums">{industries.length} rubros</span>
       </div>
 
       <div ref={ref} className="fade-x">

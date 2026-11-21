@@ -131,7 +131,7 @@ export default function Nav() {
 
           <a
             href="#contacto"
-            className="hidden md:inline-flex items-center gap-1.5 rounded-full bg-accent text-bg text-sm font-medium pl-4 pr-3 py-2 ml-1 transition-transform active:scale-[0.97]"
+            className="hidden md:inline-flex items-center gap-1.5 rounded-full bg-accent text-bg text-sm font-medium pl-4 pr-3 py-2 ml-1 hover:bg-accent-strong transition-[background-color,transform] active:scale-[0.97]"
           >
             Escríbeme
             <ArrowUpRightIcon size={14} weight="bold" />
@@ -172,7 +172,7 @@ export default function Nav() {
                     href={`#${l.id}`}
                     onClick={(e) => goTo(e, l.id)}
                     variants={{ hidden: { y: '100%' }, show: { y: '0%', transition: { duration: 0.7, ease: easeOutExpo } } }}
-                    className="flex items-baseline justify-between py-5 font-display text-4xl font-medium tracking-tighter"
+                    className="flex items-baseline justify-between py-5 font-display text-4xl font-medium tracking-display"
                   >
                     {l.label}
                     <span className="font-mono text-xs text-text-dim pr-1">0{i + 1}</span>

@@ -1,7 +1,6 @@
 import { Analytics } from '@vercel/analytics/react';
 import { LazyMotion, MotionConfig, domMax } from 'framer-motion';
 import SmoothScroll from './components/SmoothScroll';
-import GrainOverlay from './components/ui/GrainOverlay';
 import Nav from './components/Nav';
 import Hero from './components/Hero';
 import IndustriesMarquee from './components/IndustriesMarquee';
@@ -28,7 +27,6 @@ export default function App() {
             </main>
             <Footer />
           </div>
-          <GrainOverlay />
           <Analytics />
         </SmoothScroll>
       </MotionConfig>

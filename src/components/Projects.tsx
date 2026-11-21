@@ -4,7 +4,6 @@ import { ArrowUpRightIcon } from '@phosphor-icons/react';
 import { projects, type Project } from '../data/projects';
 import Reveal from './Reveal';
 import LineReveal from './ui/LineReveal';
-import ScrambleText from './ui/ScrambleText';
 import ProjectFrame from './projects/ProjectFrame';
 import ProjectLightbox from './projects/ProjectLightbox';
 
@@ -60,23 +59,23 @@ function ProjectBlock({
   }, [inView, index, onActive]);
 
   return (
-    <article ref={ref} className="lg:min-h-[85vh] flex flex-col justify-center gap-8 py-4 lg:py-16 lg:pl-12">
+    <article ref={ref} className="lg:min-h-[80vh] flex flex-col justify-center gap-8 py-4 lg:py-16 lg:pl-12">
       <MobileGallery project={project} onOpen={onOpen} />
 
       <Reveal>
         <div className="flex flex-wrap items-center gap-3">
           <span className="font-mono text-xs text-text-dim tabular-nums">
-            {pad(index + 1)} / {pad(total)}
+            {pad(index + 1)}/{pad(total)}
           </span>
           {project.badge && (
-            <span className="inline-flex items-center gap-2 rounded-full bg-accent-dim border border-accent/30 text-accent font-mono text-[11px] uppercase tracking-wider px-2.5 py-1">
+            <span className="inline-flex items-center gap-2 rounded-full bg-accent-dim border border-accent/30 text-accent text-xs font-medium px-3 py-1">
               <span className="breathe w-1.5 h-1.5 rounded-full bg-accent" />
-              <ScrambleText text={project.badge} />
+              {project.badge}
             </span>
           )}
         </div>
 
-        <h3 className="mt-5 font-display font-semibold text-2xl sm:text-[2rem] leading-[1.1] tracking-tight max-w-[24ch]">
+        <h3 className="mt-5 font-display font-semibold text-2xl sm:text-[2rem] leading-[1.1] tracking-[-0.025em] max-w-[24ch]">
           {project.title}
         </h3>
         <p className="mt-4 text-[15px] text-text-muted leading-relaxed max-w-[58ch]">{project.description}</p>
@@ -144,22 +143,19 @@ export default function Projects() {
       <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-6 lg:gap-16 items-end">
           <div>
-            <span className="eyebrow">
-              <ScrambleText text="Proyectos reales" />
-            </span>
             <LineReveal
               text="Esto no son demos: son sistemas vendidos y en uso"
-              className="mt-5 font-display font-semibold text-[2rem] sm:text-5xl leading-[1.05] tracking-tighter max-w-[18ch]"
+              className="font-display font-semibold text-[2rem] sm:text-5xl leading-[1.05] tracking-display max-w-[18ch]"
             />
           </div>
           <Reveal delay={0.15}>
             <p className="text-text-muted leading-relaxed max-w-[52ch] lg:ml-auto">
-              Sistemas de gestión que desarrollé para negocios reales — gimnasios, una barbería y un taller electromecánico — que hoy se usan todos los días.
+              Sistemas de gestión que desarrollé para negocios reales — gimnasios, una barbería, un taller electromecánico y un centro de estética — que hoy se usan todos los días.
             </p>
           </Reveal>
         </div>
 
-        <div className="mt-14 lg:mt-20 grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-16">
+        <div className="mt-14 lg:mt-20 grid grid-cols-1 lg:grid-cols-[0.78fr_1.22fr] gap-16 lg:gap-14">
           <div ref={listRef} className="relative flex flex-col gap-20 lg:gap-0">
             <div aria-hidden="true" className="hidden lg:block absolute left-0 top-0 bottom-0 w-px bg-border">
               <m.div style={{ scaleY: progress }} className="origin-top h-full w-full bg-accent" />
@@ -178,6 +174,7 @@ export default function Projects() {
 
           <div className="hidden lg:block">
             <div className="sticky top-28">
+              <div aria-hidden="true" className="absolute -inset-10 -z-10 rounded-[3rem] bg-[radial-gradient(60%_60%_at_50%_40%,rgb(169_139_255/0.14),transparent_70%)]" />
               <ProjectFrame
                 project={active}
                 projectIndex={view.project}

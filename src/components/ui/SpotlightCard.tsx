@@ -16,8 +16,8 @@ const ringMask = {
 export default function SpotlightCard({ children, className = '' }: SpotlightCardProps) {
   const x = useMotionValue(-1000);
   const y = useMotionValue(-1000);
-  const ring = useMotionTemplate`radial-gradient(380px circle at ${x}px ${y}px, rgb(198 244 50 / 0.55), transparent 45%)`;
-  const wash = useMotionTemplate`radial-gradient(640px circle at ${x}px ${y}px, rgb(198 244 50 / 0.05), transparent 45%)`;
+  const ring = useMotionTemplate`radial-gradient(380px circle at ${x}px ${y}px, rgb(169 139 255 / 0.55), transparent 45%)`;
+  const wash = useMotionTemplate`radial-gradient(640px circle at ${x}px ${y}px, rgb(169 139 255 / 0.06), transparent 45%)`;
 
   const handleMove = (event: PointerEvent<HTMLDivElement>) => {
     if (event.pointerType !== 'mouse') return;

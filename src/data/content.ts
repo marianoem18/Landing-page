@@ -36,6 +36,7 @@ export const industries: string[] = [
   'Restaurante',
   'Gimnasio',
   'Barbería',
+  'Estética',
   'Tienda',
   'Consultorio',
   'Veterinaria',
@@ -49,6 +50,14 @@ export const industries: string[] = [
   'Estudio jurídico',
   'Contador',
   'Empresa',
+];
+
+export const clients: string[] = [
+  'AlphaGym',
+  'Strong Gym Boutique',
+  'Sector B Barbería',
+  'ElectroMecánica',
+  'EG Estética y Solarium',
 ];
 
 export type FAQItem = { question: string; answer: string };

@@ -9,7 +9,6 @@ import {
 import { CALENDLY_URL, EMAIL, LINKEDIN_URL, WHATSAPP_URL } from '../data/contact';
 import { fadeUp, staggerParent } from '../lib/motion';
 import LineReveal from './ui/LineReveal';
-import ScrambleText from './ui/ScrambleText';
 import SpotlightCard from './ui/SpotlightCard';
 
 export default function FinalCTA() {
@@ -19,17 +18,14 @@ export default function FinalCTA() {
         <SpotlightCard className="rounded-[2rem] sm:rounded-[2.5rem] border border-border bg-surface overflow-hidden shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]">
           <div
             aria-hidden="true"
-            className="absolute inset-0 grid-lines [mask-image:radial-gradient(ellipse_60%_80%_at_100%_100%,black,transparent)]"
+            className="absolute inset-0 bg-[radial-gradient(55%_75%_at_100%_100%,rgb(169_139_255/0.22),transparent_70%),radial-gradient(35%_45%_at_0%_0%,rgb(120_90_230/0.10),transparent_70%)]"
           />
 
           <div className="relative grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-12 lg:gap-16 items-end px-6 py-14 sm:px-12 sm:py-16 lg:px-16 lg:py-20">
             <div>
-              <span className="eyebrow">
-                <ScrambleText text="Hablemos" />
-              </span>
               <LineReveal
                 text="Contame sobre tu negocio y veamos cómo puedo ayudarte"
-                className="mt-6 font-display font-semibold text-[2.25rem] sm:text-6xl xl:text-7xl leading-[1.02] tracking-tighter max-w-[16ch]"
+                className="font-display font-semibold text-[2.25rem] sm:text-6xl xl:text-[4.25rem] leading-[1.02] tracking-display max-w-[16ch]"
               />
               <p className="mt-6 text-text-muted leading-relaxed max-w-[46ch]">
                 Escribime directamente o agendá una reunión y te respondo a la brevedad.
@@ -48,7 +44,7 @@ export default function FinalCTA() {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noreferrer"
-                className="group flex items-center justify-between gap-4 rounded-full bg-accent text-bg font-medium pl-6 pr-2 py-2 transition-transform active:scale-[0.98]"
+                className="group flex items-center justify-between gap-4 rounded-full bg-accent text-bg font-medium pl-6 pr-2 py-2 shadow-[0_12px_32px_-14px_rgb(169_139_255/0.8)] hover:bg-accent-strong transition-[background-color,transform] active:scale-[0.98]"
               >
                 <span className="flex items-center gap-3">
                   <WhatsappLogoIcon size={20} weight="regular" />
@@ -77,7 +73,7 @@ export default function FinalCTA() {
 
               <m.div
                 variants={fadeUp}
-                className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-3 font-mono text-xs text-text-muted"
+                className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-text-muted"
               >
                 <a href={`mailto:${EMAIL}`} className="inline-flex items-center gap-2 hover:text-accent transition-colors">
                   <EnvelopeSimpleIcon size={15} weight="light" />

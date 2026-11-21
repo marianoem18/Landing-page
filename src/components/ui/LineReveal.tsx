@@ -10,6 +10,8 @@ type LineRevealProps = {
   delay?: number;
   stagger?: number;
   immediate?: boolean;
+  /** Words from this index on are set in the muted text color. */
+  dimFrom?: number;
 };
 
 const word = {
@@ -26,8 +28,10 @@ export default function LineReveal({
   delay = 0,
   stagger = 0.04,
   immediate = false,
+  dimFrom,
 }: LineRevealProps) {
   const words = text.split(' ');
+  const tone = (i: number) => (dimFrom !== undefined && i >= dimFrom ? 'text-text-muted' : '');
 
   if (immediate) {
     const Tag = as;
@@ -37,7 +41,7 @@ export default function LineReveal({
         {words.map((w, i) => (
           <span key={`${w}-${i}`} aria-hidden="true">
             <span className={wordMask}>
-              <span className="inline-block word-rise" style={{ animationDelay: `${delay + i * stagger}s` }}>
+              <span className={`inline-block word-rise ${tone(i)}`} style={{ animationDelay: `${delay + i * stagger}s` }}>
                 {w}
               </span>
             </span>
@@ -62,7 +66,7 @@ export default function LineReveal({
       {words.map((w, i) => (
         <span key={`${w}-${i}`} aria-hidden="true">
           <span className={wordMask}>
-            <m.span className="inline-block" variants={word}>
+            <m.span className={`inline-block ${tone(i)}`} variants={word}>
               {w}
             </m.span>
           </span>

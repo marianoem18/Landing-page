@@ -18,6 +18,10 @@ const BLUEPRINTS: Blueprint[] = [
     modules: ['Turnos online', 'Comisiones por barbero', 'Recordatorios por WhatsApp', 'Caja diaria', 'Reportes semanales'],
   },
   {
+    industry: 'Estética',
+    modules: ['Agenda por cabina', 'Reserva online', 'Clientes e historial', 'Packs y gift cards', 'Caja diaria'],
+  },
+  {
     industry: 'Taller',
     modules: ['Ingreso de vehículos', 'Órdenes de trabajo', 'Presupuestos', 'Aviso al cliente por WhatsApp', 'Historial por vehículo'],
   },

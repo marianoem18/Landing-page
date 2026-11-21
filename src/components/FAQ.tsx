@@ -4,7 +4,6 @@ import { PlusIcon } from '@phosphor-icons/react';
 import { faqs } from '../data/content';
 import { easeOutExpo, softSpring } from '../lib/motion';
 import LineReveal from './ui/LineReveal';
-import ScrambleText from './ui/ScrambleText';
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -14,13 +13,17 @@ export default function FAQ() {
       <div className="mx-auto max-w-[1400px] px-5 sm:px-8 grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-12 lg:gap-20">
         <div>
           <div className="lg:sticky lg:top-32">
-            <span className="eyebrow">
-              <ScrambleText text="Preguntas frecuentes" />
-            </span>
             <LineReveal
               text="Lo que más me preguntan"
-              className="mt-5 font-display font-semibold text-[2rem] sm:text-5xl leading-[1.05] tracking-tighter max-w-[14ch]"
+              className="font-display font-semibold text-[2rem] sm:text-5xl leading-[1.05] tracking-display max-w-[14ch]"
             />
+            <p className="mt-5 text-text-muted leading-relaxed max-w-[36ch]">
+              ¿Tenés otra duda?{' '}
+              <a href="#contacto" className="text-text underline decoration-accent/60 hover:decoration-accent transition-colors">
+                Escribime
+              </a>{' '}
+              y lo vemos juntos.
+            </p>
           </div>
         </div>
 
@@ -35,15 +38,8 @@ export default function FAQ() {
                   onClick={() => setOpenIndex(isOpen ? null : i)}
                   aria-expanded={isOpen}
                   aria-controls={panelId}
-                  className="group w-full grid grid-cols-[2.5rem_1fr_auto] items-center gap-4 py-6 text-left"
+                  className="group w-full grid grid-cols-[1fr_auto] items-center gap-6 py-6 text-left"
                 >
-                  <span
-                    className={`font-mono text-xs tabular-nums transition-colors ${
-                      isOpen ? 'text-accent' : 'text-text-dim'
-                    }`}
-                  >
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
                   <span
                     className={`font-medium text-base sm:text-lg tracking-tight transition-colors ${
                       isOpen ? 'text-text' : 'text-text-muted group-hover:text-text'
@@ -71,7 +67,7 @@ export default function FAQ() {
                       transition={{ duration: 0.45, ease: easeOutExpo }}
                       className="overflow-hidden"
                     >
-                      <p className="pb-7 pl-[calc(2.5rem+1rem)] pr-12 text-[15px] text-text-muted leading-relaxed max-w-[62ch]">
+                      <p className="pb-7 pr-12 text-[15px] text-text-muted leading-relaxed max-w-[62ch]">
                         {f.answer}
                       </p>
                     </m.div>
